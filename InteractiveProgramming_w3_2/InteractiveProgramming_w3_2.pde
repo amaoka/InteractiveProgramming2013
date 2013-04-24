@@ -5,26 +5,28 @@ int num;
 int startX, startY;
 float bounce, ballWidth, ballHeight, bounceWall, velocity, velocityX;
 int x, y;
-int obNum;
+
+boolean isVisible;
 
 void setup() {
   size(800, 600);
   e = new Element[100];
- ob = new Obstacle(height/2,width/2, 200, 100);
-  for(int i = 0; i < 100; i++){
-  e[i] = new Element(ob, 0, 0, 0, 0);
-  
- //  e[i].setObstacles(obs);
+  ob = new Obstacle(height/2, width/2, 200, 100);
+  for (int i = 0; i < 100; i++) {
+    e[i] = new Element(ob, 0, 0, 0, 0);
   }
+  isVisible = true;
 }
 
 void draw() {
   background(255, 255, 255);
   for (int i = 0; i <100; i++) {
     e[i].drawCircle();
-  //  noFill();
-   // fill(10, 10, 10);
-    rect(ob.x, ob.y, ob.w, ob.h);
+    //  noFill();
+    if (isVisible) {
+      fill(10, 10, 10);
+      rect(ob.x, ob.y, ob.w, ob.h);
+    }
   }
 }
 
@@ -50,12 +52,12 @@ void mouseMoved() {
   }
 }
 
-void mousePressed() {
-  startX = mouseX;
-  startY = mouseY;
+void keyPressed() {
+  if (keyCode == UP) {
+    isVisible = true;
+  }
+  else if (keyCode == DOWN ) {
+    isVisible = false;
+  }
 }
 
-void mouseReleased(){
-  
-  
-}

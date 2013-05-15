@@ -35,6 +35,7 @@ void draw() {
   / ここまでを追加する。
   ************************/
   
+  
   for (int y = 0; y < 480; y = y+1) { 
     for (int x = 0; x < 640; x = x+1) {
       color c = video.pixels[x+y*640];
